@@ -26,3 +26,14 @@ app.use(express.json())
 
 // Morgan Logger
 app.use(morgan('tiny'))
+
+// ROUTE
+app.get('/', (req, res) =>{
+    res.json({ 
+        message: "Please leave a message!"
+    })
+})
+
+app.use("/tracks", trackController)
+
+app.listen(3000, ()=>console.log("Who let the dogs out on port 3000"))
