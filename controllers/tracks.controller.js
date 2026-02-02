@@ -1,19 +1,19 @@
-// Bring in the Pet Model
-const Pet = require("../models/track");
+// Bring in the Track Model
+const Track = require("../models/track");
 // Set up routing with express
 const express = require("express");
 const router = express.Router();
 
 /*
     HTTP Method	Controller	Response	URI	Use Case
-    POST	create	200	/pets	Create a pet
-    GET	index	200	/pets	List pets
-    GET	show	200	/pets/:petId	Get a single pet
-    PUT	update	200	/pets/:petId	Update a pet
-    DELETE	deletePet	204	/pets/:petId	Delete a pet
+    POST	create	200	/tracks	Create a track
+    GET	index	200	/tracks	List tracks
+    GET	show	200	/tracks/:trackId	Get a single track
+    PUT	update	200	/tracks/:trackId	Update a track
+    DELETE	deletetrack	204	/tracks/:trackId	Delete a track
 */
 
-// POST /pets
+// POST /tracks
 router.post("/", async (req, res) => {
   try {
     // throw new Error("Danger Bill Robinson!")
@@ -27,7 +27,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// GET /pets
+// GET /tracks
 router.get("/", async (req, res) => {
   try {
     const tracks = await Track.find(); // ({}) // give me all the tracks
@@ -73,7 +73,7 @@ router.delete("/:trackId", async (req, res) => {
 });
 
 
-router.put('/:petId', async (req, res)=>{
+router.put('/:trackId', async (req, res)=>{
     try {
         // new:true makes sure the track returned from findByIdAndUpdate is the updated track with the new values
         const updatedTrack = await Track.findByIdAndUpdate(req.params.trackId, req.body, {new: true})
